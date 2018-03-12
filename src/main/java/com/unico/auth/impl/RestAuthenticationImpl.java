@@ -6,14 +6,13 @@ import java.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import main.java.com.unico.dao.ServiceDao;
+import main.java.com.unico.dao.UserDao;
 import main.java.com.unico.hibernate.model.User;
 
 @Service("restAuth")
 public class RestAuthenticationImpl{
 
-    private ServiceDao servDao;
+    private UserDao servDao;
 
 	public boolean authenticate(String authCredentials) throws Exception {
 		final String encodedUserPassword = authCredentials.replaceFirst("Basic" + " ", "");
@@ -32,8 +31,8 @@ public class RestAuthenticationImpl{
 	}
 	
 	@Autowired
-	@Qualifier("serviceDao")
-	public void setServDao(ServiceDao servDao) {
+	@Qualifier("userDao")
+	public void setServDao(UserDao servDao) {
 		this.servDao = servDao;
 	}
 

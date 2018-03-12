@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import main.java.com.unico.dao.ServiceDao;
+import main.java.com.unico.dao.InputNumberDao;
 import main.java.com.unico.hibernate.model.InputNumber;
 
 /**
@@ -26,7 +26,7 @@ public class JMSMessageProcessor {
 	
 	public static Deque<Integer> qu = new ArrayDeque<Integer>();
 	
-	private ServiceDao servDao;
+	private InputNumberDao servDao;
 	
 	public void processMessage(Message msg)
 	{
@@ -54,8 +54,8 @@ public class JMSMessageProcessor {
 
 	
 	@Autowired
-	@Qualifier("serviceDao")
-	public void setServDao(ServiceDao servDao) {
+	@Qualifier("inputNumberDao")
+	public void setServDao(InputNumberDao servDao) {
 		this.servDao = servDao;
 	}
 

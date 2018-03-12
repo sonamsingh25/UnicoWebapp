@@ -6,18 +6,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import main.java.com.unico.dao.ServiceDao;
-import main.java.com.unico.dao.impl.ServiceDaoImpl;
+import main.java.com.unico.dao.GcdDao;
+
+import main.java.com.unico.dao.impl.GcdDaoImpl;
+
 
 
 @Service("soapProcessor")
 public class SOAPUnicoProcessor {
-	
-	private ServiceDao serviceDao;
+		
 	 
     public synchronized int getLargestCommonDivisor()
     {       	
@@ -49,7 +48,7 @@ public class SOAPUnicoProcessor {
     {
    	 List<Integer> listGcd = new ArrayList<Integer>();
    	 
-   	 ServiceDao serviceDao = new ServiceDaoImpl();
+   	 GcdDao serviceDao = new GcdDaoImpl();
    	 
    	 try {
 			listGcd.addAll(serviceDao.getListGcd());
@@ -66,7 +65,7 @@ public class SOAPUnicoProcessor {
     {
    	int sum = 0;       	 
    	 
-   	 ServiceDao serviceDao = new ServiceDaoImpl();
+   	GcdDao serviceDao = new GcdDaoImpl();
    	 
    	try {
 			return serviceDao.getListGcd().stream().mapToInt(i -> i).sum();
@@ -79,12 +78,4 @@ public class SOAPUnicoProcessor {
     } 
     
     
-
-
-    @Autowired
-    @Qualifier("serviceDao")
-	public void setServiceDao(ServiceDao serviceDao) {
-		this.serviceDao = serviceDao;
-	}
-
 }

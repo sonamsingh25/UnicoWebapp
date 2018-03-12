@@ -3,14 +3,12 @@ package main.java.com.unico.auth.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-
-import main.java.com.unico.dao.ServiceDao;
+import main.java.com.unico.dao.UserDao;
 
 @Service("soapAuth")
 public class SOAPUserAuthenticationImpl {
 	
-	private ServiceDao serviceDao;
+	private UserDao serviceDao;
 
 	
 	public boolean isValidUser(String userName, String password) {
@@ -27,8 +25,8 @@ public class SOAPUserAuthenticationImpl {
 
 	
 	@Autowired
-	@Qualifier("serviceDao")
-	public void setServiceDao(ServiceDao serviceDao) {
+	@Qualifier("userDao")
+	public void setServiceDao(UserDao serviceDao) {
 		this.serviceDao = serviceDao;
 	}
 	
